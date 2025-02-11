@@ -4,11 +4,11 @@ class BarChart {
         this.xValue = obj.xValue
         this.yValue = obj.yValue;
         this.chartHeight=obj.chartHeight || 300 ;
-        this.chartWidth=obj.chartWidth || 300;
-        this.barWidth=obj.barWidth || 10;
-        this.margin=obj.margin || 10;
+        this.chartWidth=obj.chartWidth || 500;
+        this.barWidth=obj.barWidth || 30;
+        this.margin=obj.margin || 20;
         this.axisThickness =obj.axisThickness || 3;
-        this.axisTickThickness =1 || 50;
+        this.axisTickThickness =obj.axisTickThickness || 3;
         this.chartPosX = obj.xPos || 50;
         this.chartPosY = obj.yPos || 350;
  
@@ -16,7 +16,7 @@ class BarChart {
         this.scaler= this.chartHeight / (max(cleanedData.map(row => row[this.yValue])));
  
         this.axisColour= color(158, 163, 176);
-        this.axisTickColour= color(155,0,0);
+        this.axisTickColour= color(0,0,0);
         this.barColour = color (84, 106, 123);
         this.axisTextColour = color(13, 31, 45);
         this.numTicks = 10;
@@ -61,8 +61,8 @@ class BarChart {
         fill(this.axisTextColour);
         textAlign(LEFT, CENTER)
         translate(xPos + (this.barWidth/2), 15)
-        textSize(10)
-        rotate(60)
+        textSize(13)
+        rotate(65)
         text (this.data[i][this.xValue], 0 , 0);
         pop()
     }

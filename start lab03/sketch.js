@@ -58,6 +58,7 @@ function draw() {
     charts.forEach(chart => chart.renderBars())
     charts.forEach(chart => chart.renderAxis())
     charts.forEach(chart => chart.renderLabels())
+    charts.forEach(chart => chart.renderTicks())
     
     // push();
     // translate(chartPosX,chartPosY)
