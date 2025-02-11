@@ -1,24 +1,24 @@
 class BarChart {
-    constructor(_data, _xValue, _yValue, _chartHeight, _chartWidth, _barWidth, _margin, _axisThickness, _chartPosX, _chartPosY) {
-        this.data = _data;
-        this.xValue = _xValue
-        this.yValue = _yValue;
-        this.chartHeight=_chartHeight;
-        this.chartWidth=_chartWidth;
-        this.barWidth=_barWidth;
-        this.margin=_margin;
-        this.axisThickness =_axisThickness;
-        this.axisTickThickness =1;
-        this.chartPosX = _chartPosX;
-        this.chartPosY = _chartPosY;
+    constructor(obj) {
+        this.data = obj.data ;
+        this.xValue = obj.xValue
+        this.yValue = obj.yValue;
+        this.chartHeight=obj.chartHeight || 300 ;
+        this.chartWidth=obj.chartWidth || 300;
+        this.barWidth=obj.barWidth || 10;
+        this.margin=obj.margin || 10;
+        this.axisThickness =obj.axisThickness || 3;
+        this.axisTickThickness =1 || 50;
+        this.chartPosX = obj.xPos || 50;
+        this.chartPosY = obj.yPos || 350;
  
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin * 2))/(this.data.length-1);
         this.scaler= this.chartHeight / (max(cleanedData.map(row => row[this.yValue])));
  
-        this.axisColour= color(255,204,0);
+        this.axisColour= color(158, 163, 176);
         this.axisTickColour= color(155,0,0);
-        this.barColour = color (100,221,100);
-        this.axisTextColour = color( 0,0,0);
+        this.barColour = color (84, 106, 123);
+        this.axisTextColour = color(13, 31, 45);
         this.numTicks = 10;
         this.tickLength = 3;
     }
