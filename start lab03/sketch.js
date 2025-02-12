@@ -113,7 +113,7 @@ function draw() {
     //     }
     // )
  
-        //Method 3b
+    //Method 3b
     // let femaleAges = cleanedData.map(number => number.Female)
     // let filteredFemaleAges = femaleAges.filter(number => number > 3)
     // console.log(femaleAges)
