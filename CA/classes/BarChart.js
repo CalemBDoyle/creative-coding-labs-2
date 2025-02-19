@@ -4,9 +4,9 @@ class BarChart {
         this.xValue = obj.xValue
         this.yValue = obj.yValue;
         this.chartHeight=obj.chartHeight || 300 ;
-        this.chartWidth=obj.chartWidth || 500;
+        this.chartWidth=obj.chartWidth || 700;
         this.barWidth=obj.barWidth || 30;
-        this.margin=obj.margin || 20;
+        this.margin=obj.margin || 15;
         this.axisThickness =obj.axisThickness || 3;
         this.axisTickThickness =obj.axisTickThickness || 3;
         this.chartPosX = obj.xPos || 50;
