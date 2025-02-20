@@ -1,21 +1,21 @@
-index,movie_name,year_of_release,category,run_time,genre,imdb_rating,votes,gross_total
-1,The Godfather,1972,R,175 min,"Crime, Drama",9.2,"1,860,471",134.97
-2,The Silence of the Lambs,1991,R,118 min,"Crime, Drama, Thriller",8.6,"1,435,344",130.74
-3,Star Wars: Episode V  The Empire Strikes Back,1980,PG,124 min,"Action, Adventure, Fantasy",8.7,"1,294,805",290.48
-4,The Shawshank Redemption,1994,R,142 min,Drama,9.3,"2,683,302",28.34
-5,The Shining,1980,R,146 min,"Drama, Horror",8.4,"1,025,560",44.02
-6,One Flew Over the Cuckoo's Nest,1975,R,133 min,Drama,8.7,"1,010,102",112.00
-7,Indiana Jones and the Raiders of the Lost Ark,1981,PG,115 min,"Action, Adventure",8.4,"969,143",248.16
-8,The Lord of the Rings: The Return of the King,2003,PG13,201 min,"Action, Adventure, Drama",9,"1,849,082",377.85
-9,Star Wars: Episode IV  A New Hope,1977,PG,121 min,"Action, Adventure, Fantasy",8.6,"1,367,430",322.74
-10,The Dark Knight,2008,PG13,152 min,"Action, Crime, Drama",9,"2,656,768",534.86
-11,The Godfather: Part II,1974,R,202 min,"Crime, Drama",9,"1,273,349",57.30
-12,Aliens,1986,R,137 min,"Action, Adventure, SciFi",8.4,"720,623",85.16
-13,Schindler's List,1993,R,195 min,"Biography, Drama, History",9,"1,357,621",96.90
-14,Inception,2010,PG13,148 min,"Action, Adventure, SciFi",8.8,"2,356,293",292.58
-15,The Lord of the Rings: The Fellowship of the Ring,2001,PG13,178 min,"Action, Adventure, Drama",8.8,"1,878,557",315.54
-16,Alien,1979,R,117 min,"Horror, SciFi",8.5,"885,635",78.90
-17,Blade Runner,1982,R,117 min,"Action, Drama, SciFi",8.1,"773,425",32.87
-18,Se7en,1995,R,127 min,"Crime, Drama, Mystery",8.6,"1,655,745",100.13
-19,Apocalypse Now,1979,R,147 min,"Drama, Mystery, War",8.5,"669,994",83.47
-20,The Lord of the Rings: The Two Towers,2002,PG13,179 min,"Action, Adventure, Drama",8.8,"1,669,715",342.55
+index,movie_name,year,category,run_time,genre,imdb_rating,votes,gross_total,budget
+1,The Godfather,1972,R,175 min,"Crime, Drama",9.2,"1,860,471",134.97,6.00
+2,The Silence of the Lambs,1991,R,118 min,"Crime, Drama, Thriller",8.6,"1,435,344",130.74,19.00
+3,Star Wars: Episode V  The Empire Strikes Back,1980,PG,124 min,"Action, Adventure, Fantasy",8.7,"1,294,805",290.48,33.00
+4,The Shawshank Redemption,1994,R,142 min,Drama,9.3,"2,683,302",28.34,25.00
+5,The Shining,1980,R,146 min,"Drama, Horror",8.4,"1,025,560",44.02,19.00
+6,One Flew Over the Cuckoo's Nest,1975,R,133 min,Drama,8.7,"1,010,102",112.00,4.40
+7,Indiana Jones and the Raiders of the Lost Ark,1981,PG,115 min,"Action, Adventure",8.4,"969,143",248.16,18.00
+8,The Lord of the Rings: The Return of the King,2003,PG13,201 min,"Action, Adventure, Drama",9,"1,849,082",377.85,94.00
+9,Star Wars: Episode IV  A New Hope,1977,PG,121 min,"Action, Adventure, Fantasy",8.6,"1,367,430",322.74,11.00
+10,The Dark Knight,2008,PG13,152 min,"Action, Crime, Drama",9,"2,656,768",534.86,185.00
+11,The Godfather: Part II,1974,R,202 min,"Crime, Drama",9,"1,273,349",57.30,13.00
+12,Aliens,1986,R,137 min,"Action, Adventure, SciFi",8.4,"720,623",85.16,18.50
+13,Schindler's List,1993,R,195 min,"Biography, Drama, History",9,"1,357,621",96.90,22.00
+14,Inception,2010,PG13,148 min,"Action, Adventure, SciFi",8.8,"2,356,293",292.58,160.00
+15,The Lord of the Rings: The Fellowship of the Ring,2001,PG13,178 min,"Action, Adventure, Drama",8.8,"1,878,557",315.54,93.00
+16,Alien,1979,R,117 min,"Horror, SciFi",8.5,"885,635",78.90,11.00
+17,Blade Runner,1982,R,117 min,"Action, Drama, SciFi",8.1,"773,425",32.87,30.00
+18,Se7en,1995,R,127 min,"Crime, Drama, Mystery",8.6,"1,655,745",100.13,33.00
+19,Apocalypse Now,1979,R,147 min,"Drama, Mystery, War",8.5,"669,994",83.47,31.50
+20,The Lord of the Rings: The Two Towers,2002,PG13,179 min,"Action, Adventure, Drama",8.8,"1,669,715",342.55,94.00

@@ -26,7 +26,7 @@ function setup(){
     noLoop();
     cleanData();
     charts.push(new BarChart({
-        data:cleanedData,
+        data: cleanedData,
         xValue: "Age_Group",
         yValue: "Female",
         // chartHeight: ,
