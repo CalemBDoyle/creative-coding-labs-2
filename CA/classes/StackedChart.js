@@ -7,7 +7,7 @@ class StackedChart {
         this.chartHeight=obj.chartHeight || 300 ;
         this.chartWidth=obj.chartWidth || 300;
         this.barWidth=obj.barWidth || 10;
-        this.margin=obj.margin || 15;
+        this.margin=obj.margin || 5;
         this.axisThickness =obj.axisThickness || 3;
         this.axisTickThickness =obj.axisTickThickness || 3;
         this.chartPosX = obj.xPos || 400;
@@ -18,8 +18,8 @@ class StackedChart {
  
         this.axisColour= color(158, 163, 176);
         this.axisTickColour= color(0,0,0);
-        this.dataColour = color (84, 106, 123);
-        this.budgetColour = color (56, 89, 80)
+        this.dataColour = color (120, 150, 120);
+        this.budgetColour = color (150,80,80)
         this.axisTextColour = color(13, 31, 45);
         this.numTicks = 10;
         this.tickLength = 3;

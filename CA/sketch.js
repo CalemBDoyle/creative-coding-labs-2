@@ -1,3 +1,4 @@
+//Diverging BarChart
 let data;
 let cleanedData = [];
 let barChart = [];
@@ -10,7 +11,7 @@ function preload(){
  
 //sets up clean data, canvas the xValue and Yvalue
 function setup(){
-    createCanvas(1000,1000);
+    createCanvas(2000,2000);
     angleMode(DEGREES);
     noLoop();
     cleanData()
@@ -48,7 +49,7 @@ function draw() {
     // barChart.forEach(chart => chart.renderAxis())
     // barChart.forEach(chart => chart.renderLabels())
     // barChart.forEach(chart => chart.renderTicks())
-    // //renders all stacked chart functions
+    //renders all stacked chart functions
     stackedChart.forEach(chart => chart.renderStackedBars())
     stackedChart.forEach(chart => chart.renderStackedAxis())
     stackedChart.forEach(chart => chart.renderStackedLabels())
