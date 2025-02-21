@@ -18,7 +18,8 @@ class ColumnChart {
  
         this.axisColour= color(158, 163, 176);
         this.axisTickColour= color(0,0,0);
-        this.barColour = color (84, 106, 123);
+        this.barColour1 = color (255, 0, 0);
+        this.barColour2 = color(0,0,255)
         this.axisTextColour = color(13, 31, 45);
         this.numTicks = 10;
         this.tickLength = 3;
@@ -35,7 +36,11 @@ class ColumnChart {
         console.log(this.yValues.length)
         for(let j=0; j<this.yValues.length; j++){
         noStroke()
-        fill(random(255))
+        if (j === 0) {
+            fill(this.barColour1); // Red for the first bar
+          } else {
+            fill(this.barColour2); // Random color for the rest of the bars
+          }
         rect(this.barWidth*j,0,this.barWidth,-this.data[i][this.yValues[j]]*this.scaler)
 
     }
