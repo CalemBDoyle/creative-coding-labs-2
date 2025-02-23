@@ -37,9 +37,9 @@ class ColumnChart {
         for(let j=0; j<this.yValues.length; j++){
         noStroke()
         if (j === 0) {
-            fill(this.barColour1); // Red for the first bar
+            fill(this.barColour1);
           } else {
-            fill(this.barColour2); // Random color for the rest of the bars
+            fill(this.barColour2);
           }
         rect(this.barWidth*j,0,this.barWidth,-this.data[i][this.yValues[j]]*this.scaler)
 
