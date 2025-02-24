@@ -6,6 +6,7 @@ let barChart = [];
 let mirrorChart = [];
 let columnChart = [];
 let stackedChart = [];
+let horizontalChart = [];
 
 
 //loads all data
@@ -57,7 +58,11 @@ function setup(){
         yValues: ["action","adventure","biography","crime","drama","horror"],
         total: total
     }))
-
+    horizontalChart.push(new HorizontalChart({
+        data: cleanedData,
+        xValue: "movie_name",
+        yValue: "gross_total"
+    }));
 }
 function draw() {
     background(250, 225, 223)
@@ -72,15 +77,21 @@ function draw() {
     mirrorChart.forEach(chart => chart.renderMirrorAxis())
     mirrorChart.forEach(chart => chart.renderMirrorLabels())
     mirrorChart.forEach(chart => chart.renderMirrorTicks())
-    // columnChart.forEach(chart => chart.renderColumns())
-    // columnChart.forEach(chart => chart.renderColumnAxis())
-    // columnChart.forEach(chart => chart.renderColumnLabels())
-    // columnChart.forEach(chart => chart.renderColumnTicks())
+    columnChart.forEach(chart => chart.renderColumns())
+    columnChart.forEach(chart => chart.renderColumnAxis())
+    columnChart.forEach(chart => chart.renderColumnLabels())
+    columnChart.forEach(chart => chart.renderColumnTicks())
+    columnChart.forEach(chart => chart.renderColumnTicksText())
     stackedChart.forEach(chart => chart.renderStackedBars())
     stackedChart.forEach(chart => chart.renderStackedAxis())
     stackedChart.forEach(chart => chart.renderStackedLabels())
     stackedChart.forEach(chart => chart.renderStackedTicks())
     stackedChart.forEach(chart => chart.renderStackedTicksText())
+    horizontalChart.forEach(chart => chart.renderHorizontalBars())
+    horizontalChart.forEach(chart => chart.renderHorizontalAxis())
+    horizontalChart.forEach(chart => chart.renderHorizontalLabels())
+    horizontalChart.forEach(chart => chart.renderHorizontalTicks())
+    horizontalChart.forEach(chart => chart.renderHorizontalTicksText())
 }
 
 //cleaning data
