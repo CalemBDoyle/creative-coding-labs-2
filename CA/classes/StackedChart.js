@@ -41,10 +41,12 @@ class StackedChart {
     pop()
     pop()
     }
+    pop();
+    pop();
 }
     renderStackedAxis() {
         push();
-        translate(-this.margin,0)
+        translate(this.chartPosX,this.chartPosY)
         noFill()
         stroke(this.axisColour)
         strokeWeight(this.axisThickness)
@@ -55,7 +57,7 @@ class StackedChart {
  
     renderStackedLabels() {
     push();
-    translate(-this.margin,0)
+    translate(this.chartPosX,this.chartPosY)
  
     push()
     translate(this.margin,0)
@@ -76,7 +78,7 @@ class StackedChart {
  
     renderStackedTicks() {
     push();
-    translate(-this.margin,0)
+    translate(this.chartPosX,this.chartPosY)
     noFill()
     stroke(this.axisTickColour)
     strokeWeight(this.axisTickThickness)
@@ -90,7 +92,7 @@ class StackedChart {
 
     renderStackedTicksText() {
     push();
-    translate(-this.margin,0)
+    translate(this.chartPosX,this.chartPosY)
     fill(this.axisTextColour)
     noStroke()
     let tickIncrement = this.chartHeight/this.numTicks;
@@ -102,4 +104,5 @@ class StackedChart {
     }
     pop()
     }
+    
 }

@@ -61,7 +61,7 @@ function setup(){
     horizontalChart.push(new HorizontalChart({
         data: cleanedData,
         xValue: "movie_name",
-        yValue: "gross_total"
+        yValue: "imdb_rating"
     }));
 }
 function draw() {
@@ -82,6 +82,7 @@ function draw() {
     columnChart.forEach(chart => chart.renderColumnLabels())
     columnChart.forEach(chart => chart.renderColumnTicks())
     columnChart.forEach(chart => chart.renderColumnTicksText())
+    
     stackedChart.forEach(chart => chart.renderStackedBars())
     stackedChart.forEach(chart => chart.renderStackedAxis())
     stackedChart.forEach(chart => chart.renderStackedLabels())
@@ -92,6 +93,7 @@ function draw() {
     horizontalChart.forEach(chart => chart.renderHorizontalLabels())
     horizontalChart.forEach(chart => chart.renderHorizontalTicks())
     horizontalChart.forEach(chart => chart.renderHorizontalTicksText())
+
 }
 
 //cleaning data

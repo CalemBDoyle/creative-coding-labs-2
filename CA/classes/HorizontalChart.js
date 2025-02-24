@@ -9,11 +9,11 @@ class HorizontalChart {
         this.margin=obj.margin || 15;
         this.axisThickness =obj.axisThickness || 3;
         this.axisTickThickness =obj.axisTickThickness || 3;
-        this.chartPosX = obj.xPos || 0;
-        this.chartPosY = obj.yPos || 400;
+        this.chartPosX = obj.xPos || 1000;
+        this.chartPosY = obj.yPos || 600;
         // creates rounded Value (makes reading chart easier)
         this.maxValue = max(cleanedData.map(row => row[this.yValue]));
-        this.roundedValue = ceil(this.maxValue / 100) * 100
+        this.roundedValue = ceil(this.maxValue / 10) * 10
  
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin * 2))/(this.data.length-1);
         this.scaler= this.chartHeight / this.roundedValue
@@ -27,6 +27,7 @@ class HorizontalChart {
     renderHorizontalBars() {
     push();
     translate(this.chartPosX,this.chartPosY)
+    rotate(90)
     push()
     translate(this.margin,0)
     for (let i = 0; i < this.data.length; i++) {
@@ -43,10 +44,11 @@ class HorizontalChart {
     renderHorizontalAxis() {
         push();
         translate(this.chartPosX,this.chartPosY)
+        rotate(90)
         noFill()
         stroke(this.axisColour)
         strokeWeight(this.axisThickness)
-        line(0,0,0,-this.chartHeight)
+        line(this.chartWidth,0,this.chartWidth,-this.chartHeight)
         line(0,0,this.chartWidth,0)
         pop()
     }
@@ -54,6 +56,7 @@ class HorizontalChart {
     renderHorizontalLabels() {
     push();
     translate(this.chartPosX,this.chartPosY)
+    rotate(90)
  
     push()
     translate(this.margin,0)
@@ -61,10 +64,10 @@ class HorizontalChart {
         let xPos = (this.barWidth + this.gap) * i;        
         push()
         fill(this.axisTextColour);
-        textAlign(LEFT, CENTER)
+        textAlign(RIGHT, CENTER)
         translate(xPos + (this.barWidth/2), 15)
         textSize(12)
-        rotate(65)
+        rotate(270)
         text (this.data[i][this.xValue], 0 , 0);
         pop()
     }
@@ -75,12 +78,13 @@ class HorizontalChart {
     renderHorizontalTicks() {
     push();
     translate(this.chartPosX,this.chartPosY)
+    rotate(90)
     noFill()
     stroke(this.axisTickColour)
     strokeWeight(this.axisTickThickness)
     let tickIncrement = this.chartHeight/this.numTicks;
     for(let i = 0; i <= this.numTicks; i++) {
-        line(0, -tickIncrement*i, -this.tickLength, -tickIncrement*i)
+        line(this.chartWidth,-tickIncrement*i, (this.chartWidth + this.tickLength), -tickIncrement*i)
         
     }
     pop()
@@ -89,13 +93,14 @@ class HorizontalChart {
     renderHorizontalTicksText() {
     push();
     translate(this.chartPosX,this.chartPosY)
+    rotate(90)
     fill(this.axisTextColour)
     noStroke()
     let tickIncrement = this.chartHeight/this.numTicks;
     let valueIncrement = this.roundedValue / this.numTicks;
     for(let i = 0; i <= this.numTicks; i++) {
-            
-    text(valueIncrement*i, this.tickLength-30, -tickIncrement*i)
+    
+    text(valueIncrement*i, this.tickLength+this.chartWidth+10, -tickIncrement*i)
             
     }
     pop()
