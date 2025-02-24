@@ -24,6 +24,7 @@ function setup(){
     //max Value calculation for column chart
     let maxBudget= max(cleanedData.map(row=> row.budget))
     let maxGross= max(cleanedData.map(row=> row.gross_total))
+    let total = max(cleanedGenreData.map(row => row.total))
     let maxValues= []
     maxValues.push(maxBudget, maxGross)
     console.log(maxValues);
@@ -54,12 +55,8 @@ function setup(){
         data: cleanedGenreData,
         xValue: "year",
         yValues: ["action","adventure","biography","crime","drama","horror"],
-        total: "total"
+        total: total
     }))
-
-
-    console.log("Before parsing:", genreData.rows[1].obj);
-    console.log("After parsing:", cleanedGenreData[1]);
 
 }
 function draw() {

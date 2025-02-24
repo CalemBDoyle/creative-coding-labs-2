@@ -41,7 +41,6 @@ class MirrorChart {
         rect(xPos,0,this.barWidth,(-this.data[i][this.grossValue]*this.scaler)/2)
         fill(this.budgetColour)
         rect(xPos,0,this.barWidth,(this.data[i][this.budgetValue]*this.scaler)/2)
-        console.log
     }
     pop()
     pop()

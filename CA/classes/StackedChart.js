@@ -2,7 +2,7 @@ class StackedChart {
     constructor(obj) {
         this.data = obj.data ;
         this.xValue = obj.xValue;
-        this.yValue = obj.yValues;
+        this.yValues = obj.yValues;
         this.chartHeight=obj.chartHeight || 250 ;
         this.chartWidth=obj.chartWidth || 500;
         this.barWidth=obj.barWidth || 20;
@@ -16,7 +16,7 @@ class StackedChart {
         this.scaler= this.chartHeight / this.total
         this.axisColour= color(158, 163, 176);
         this.axisTickColour= color(0,0,0);
-        this.barColour = color (84, 106, 123);
+        this.barColour = ['#FF0000','#00FF00', '#0000FF', '#FFFF00', '#00FFFF','#FF00FF'];
         this.axisTextColour = color(13, 31, 45);
         this.numTicks = 6;
         this.tickLength = 3;
@@ -27,18 +27,24 @@ class StackedChart {
     push()
     translate(this.margin,0)
     for (let i = 0; i < this.data.length; i++) {
-        let xPos = (this.barWidth + this.gap) * i;
-        fill(this.barColour)
-        noStroke()
-        rect(xPos,0,this.barWidth,-this.data[i][this.yValue]*this.scaler)
-    }
+        let xPos = (this.barWidth + this.gap)*i;
+        push()
+        translate (xPos,0)
+        push()
+        for(let j=0; j<this.yValues.length; j++){
+            noStroke();
+            fill(this.barColour[j])
+            rect(0,0,this.barWidth,-this.data[i][this.yValues[j]]*this.scaler)
+            translate(0, -this.data[i][this.yValues[j]]*this.scaler)
+        }
+        
     pop()
     pop()
     }
- 
+}
     renderStackedAxis() {
         push();
-        translate(this.chartPosX,this.chartPosY)
+        translate(-this.margin,0)
         noFill()
         stroke(this.axisColour)
         strokeWeight(this.axisThickness)
@@ -49,7 +55,7 @@ class StackedChart {
  
     renderStackedLabels() {
     push();
-    translate(this.chartPosX,this.chartPosY)
+    translate(-this.margin,0)
  
     push()
     translate(this.margin,0)
@@ -70,7 +76,7 @@ class StackedChart {
  
     renderStackedTicks() {
     push();
-    translate(this.chartPosX,this.chartPosY)
+    translate(-this.margin,0)
     noFill()
     stroke(this.axisTickColour)
     strokeWeight(this.axisTickThickness)
@@ -84,7 +90,7 @@ class StackedChart {
 
     renderStackedTicksText() {
     push();
-    translate(this.chartPosX,this.chartPosY)
+    translate(-this.margin,0)
     fill(this.axisTextColour)
     noStroke()
     let tickIncrement = this.chartHeight/this.numTicks;
