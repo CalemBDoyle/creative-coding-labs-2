@@ -14,7 +14,11 @@ class MirrorChart {
         this.chartPosY = obj.yPos || 700;
         // creates rounded Value (makes reading chart easier)
         this.maxValue = max(cleanedData.map(row => row[this.grossValue]));
-        this.roundedValue = ceil(this.maxValue / 100) * 100
+        if (this.maxValue < 100) {
+            this.roundedValue = ceil(this.maxValue / 10) * 10
+        } else {
+            this.roundedValue = ceil(this.maxValue / 100) * 100
+        }
  
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin * 2))/(this.data.length-1);
         this.scaler= this.chartHeight / this.roundedValue;
@@ -22,7 +26,7 @@ class MirrorChart {
         this.axisColour= color(158, 163, 176);
         this.axisTickColour= color(0,0,0);
         this.dataColour = color (120, 150, 120);
-        this.budgetColour = color (150,80,80)
+        this.budgetColour = color (150,80,80);
         this.axisTextColour = color(13, 31, 45);
         this.numTicks = 10;
         this.tickLength = 3;

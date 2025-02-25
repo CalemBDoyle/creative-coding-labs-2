@@ -13,7 +13,11 @@ class BarChart {
         this.chartPosY = obj.yPos || 300;
         // creates rounded Value (makes reading chart easier)
         this.maxValue = max(cleanedData.map(row => row[this.yValue]));
-        this.roundedValue = ceil(this.maxValue / 100) * 100
+        if (this.maxValue < 100) {
+            this.roundedValue = ceil(this.maxValue / 10) * 10
+        } else {
+            this.roundedValue = ceil(this.maxValue / 100) * 100
+        }
  
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin * 2))/(this.data.length-1);
         this.scaler= this.chartHeight / this.roundedValue

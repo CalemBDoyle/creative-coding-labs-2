@@ -13,7 +13,11 @@ class HorizontalChart {
         this.chartPosY = obj.yPos || 600;
         // creates rounded Value (makes reading chart easier)
         this.maxValue = max(cleanedData.map(row => row[this.yValue]));
-        this.roundedValue = ceil(this.maxValue / 10) * 10
+        if (this.maxValue < 100) {
+            this.roundedValue = ceil(this.maxValue / 10) * 10
+        } else {
+            this.roundedValue = ceil(this.maxValue / 100) * 100
+        }
  
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin * 2))/(this.data.length-1);
         this.scaler= this.chartHeight / this.roundedValue
@@ -67,7 +71,7 @@ class HorizontalChart {
         textAlign(RIGHT, CENTER)
         translate(xPos + (this.barWidth/2), 15)
         textSize(12)
-        rotate(270)
+        rotate(-90)
         text (this.data[i][this.xValue], 0 , 0);
         pop()
     }
@@ -95,13 +99,19 @@ class HorizontalChart {
     translate(this.chartPosX,this.chartPosY)
     rotate(90)
     fill(this.axisTextColour)
+    
     noStroke()
     let tickIncrement = this.chartHeight/this.numTicks;
     let valueIncrement = this.roundedValue / this.numTicks;
-    for(let i = 0; i <= this.numTicks; i++) {
     
-    text(valueIncrement*i, this.tickLength+this.chartWidth+10, -tickIncrement*i)
-            
+    for (let i = 0; i <= this.numTicks; i++) {
+            let yPos = tickIncrement * i; 
+        push();
+
+        translate(this.tickLength + this.chartWidth + 15, -yPos+5);
+        rotate(-90)  
+        text(valueIncrement * i, 0, 0);
+        pop();
     }
     pop()
     }
