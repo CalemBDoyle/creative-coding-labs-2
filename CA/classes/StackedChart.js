@@ -14,14 +14,14 @@ class StackedChart {
         this.total = obj.total
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin * 2))/(this.data.length-1);
         this.scaler= this.chartHeight / this.total
-        this.axisColour= color(158, 163, 176);
-        this.axisTickColour= color(0,0,0);
-        this.actionColour = color(102,206,214)
-        this.adventureColour = color(93, 112, 127)
-        this.biographyColour = color(109, 138, 150)
-        this.crimeColour = color(135, 151, 178)
-        this.dramaColour = color(167, 165, 198)
-        this.horrorColour = color(121, 141, 157)
+        this.axisColour = color(158, 163, 176);
+        this.axisTickColour = color(0,0,0);
+        this.actionColour = color(70, 130, 180)
+        this.adventureColour = color(255, 223, 0)
+        this.biographyColour = color(144, 238, 144)
+        this.crimeColour = color(255, 127, 80)
+        this.dramaColour = color(230, 200, 250)
+        this.horrorColour = color(255, 140, 180)
         this.barColours = [this.actionColour,this.adventureColour, this.biographyColour, this.crimeColour, this.dramaColour,this.horrorColour];
         this.axisTextColour = color(13, 31, 45);
         
@@ -111,5 +111,16 @@ class StackedChart {
     }
     pop()
     }
-    
+    renderStackedLegend(){
+        push()
+        translate(this.chartPosX, this.chartPosY)
+        noStroke()
+        translate (this.chartWidth+10, -this.chartHeight)
+        for(let i=0; i <= this.data.length; i++){
+        fill(this.barColours[i])
+        rect(0,30*i,10,10)
+        fill(0)
+        text("hello",20,(30*i)+10)
+        }
+    }
 }

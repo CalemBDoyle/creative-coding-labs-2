@@ -23,7 +23,7 @@ class BarChart {
         this.scaler= this.chartHeight / this.roundedValue
         this.axisColour= color(158, 163, 176);
         this.axisTickColour= color(0,0,0);
-        this.barColours = obj.barColours
+        this.barColours = color(110, 160, 255);
         this.axisTextColour = color(13, 31, 45);
         this.numTicks = 10;
         this.tickLength = 3;
@@ -36,7 +36,7 @@ class BarChart {
     translate(this.margin,0)
     for (let i = 0; i < this.data.length; i++) {
         let xPos = (this.barWidth + this.gap) * i;
-        fill(this.barColours[i])
+        fill(this.barColours)
         noStroke()
         rect(xPos,0,this.barWidth,-this.data[i][this.yValue]*this.scaler)
        
@@ -107,11 +107,12 @@ class BarChart {
     }
     renderHeader() {
         push()
+        
         translate(this.chartPosX,this.chartPosY)
         fill(this.axisTextColour)
         textSize(20)
         textAlign(CENTER)
-        text("Gross Income",this.chartWidth/2,-this.chartHeight-30)
+        text(String(this.yValue),this.chartWidth/2,-this.chartHeight-30)
         pop()
         
     }

@@ -8,13 +8,14 @@ let columnChart = [];
 let stackedChart = [];
 let horizontalChart1 = [];
 let horizontalChart2 = [];
-let barColours=[];
+let font;
 
 
 //loads all data
 function preload(){
     data= loadTable('data/movies.csv', 'csv', 'header')
     genreData=loadTable('data/movie_genre.csv', 'csv', 'header')
+    font= loadFont('Poppins/Poppins-Medium.ttf')
 }
  
 //sets up clean data, canvas the xValue and Yvalue
@@ -24,9 +25,8 @@ function setup(){
     noLoop();
     cleanData()
     cleanGenreData()
-    //barColours.push([0, 0, 128], [0, 0, 160], [0, 0, 192], [0, 0, 224], [0, 0, 255], [70, 130, 180], [100, 149, 237], [135, 206, 250], [176, 224, 230], [240, 248, 255], [173, 216, 230], [135, 206, 235], [0, 191, 255], [30, 144, 255], [70, 130, 180], [0, 255, 255], [135, 206, 250], [176, 224, 230], [0, 255, 255], [100, 149, 237] )
-    barColours.push([255, 99, 132],[255, 159, 64],[255, 206, 86],[75, 192, 192],[54, 162, 235],[153, 102, 255],[255, 105, 180],[186, 85, 211],[60, 179, 113],[0, 255, 255],[255, 69, 0],[255, 165, 0],[75, 0, 130],[138, 43, 226],[255, 215, 0],[34, 139, 34],[255, 0, 255],[255, 99, 255],[255, 0, 0],[128, 128, 128] )
-    //max Value calculation for column chart
+    textFont(font)
+    //calculations for column chart and stacked
     let maxBudget= max(cleanedData.map(row=> row.budget))
     let maxGross= max(cleanedData.map(row=> row.gross_total))
     let total = max(cleanedGenreData.map(row => row.total))
@@ -40,7 +40,6 @@ function setup(){
         data: cleanedData,
         xValue: "movie_name",
         yValue: "gross_total",
-        barColours: barColours
     }));
     mirrorChart.push(new MirrorChart({
         data: cleanedData,
@@ -67,7 +66,6 @@ function setup(){
         data: cleanedData,
         xValue: "movie_name",
         yValue: "imdb_rating",
-        barColours: barColours
     }));
     horizontalChart2.push(new HorizontalChart({
         data: cleanedData,
@@ -75,18 +73,17 @@ function setup(){
         yValue: "budget",
         XPos: 1200,
         yPos: 1150,
-        barColours: barColours
         
     }));
 }
 function draw() {
     background(250, 225, 223)
     //renders bar chart functions
-    renderBarChart()
+    // renderBarChart()
     //renders mirror chart
     renderMirrorChart()
     //renders column chart
-    //renderColumnChart()
+    renderColumnChart()
     //renders horizontal chart
     renderHorizontalChart1()
     renderHorizontalChart2()
@@ -111,6 +108,7 @@ function cleanGenreData() {
     }   
 }
 
+//functions render all of the charts
 function renderBarChart() {
     barChart.forEach(chart => chart.renderBars())
     barChart.forEach(chart => chart.renderAxis())
@@ -124,6 +122,7 @@ function renderMirrorChart(){
     mirrorChart.forEach(chart => chart.renderMirrorAxis())
     mirrorChart.forEach(chart => chart.renderMirrorLabels())
     mirrorChart.forEach(chart => chart.renderMirrorTicks())
+    mirrorChart.forEach(chart => chart.renderMirrorTicksText())
     mirrorChart.forEach(chart => chart.renderMirrorHeader())
 }
 function renderStackedChart(){
@@ -132,6 +131,7 @@ function renderStackedChart(){
     stackedChart.forEach(chart => chart.renderStackedLabels())
     stackedChart.forEach(chart => chart.renderStackedTicks())
     stackedChart.forEach(chart => chart.renderStackedTicksText())
+    stackedChart.forEach(chart => chart.renderStackedLegend())
 }
 function renderHorizontalChart1(){
     horizontalChart1.forEach(chart => chart.renderHorizontalBars())
@@ -139,6 +139,7 @@ function renderHorizontalChart1(){
     horizontalChart1.forEach(chart => chart.renderHorizontalLabels())
     horizontalChart1.forEach(chart => chart.renderHorizontalTicks())
     horizontalChart1.forEach(chart => chart.renderHorizontalTicksText())
+    horizontalChart1.forEach(chart => chart.renderHorizontalHeader())
 }
 function renderHorizontalChart2(){
     horizontalChart2.forEach(chart => chart.renderHorizontalBars())
@@ -146,6 +147,7 @@ function renderHorizontalChart2(){
     horizontalChart2.forEach(chart => chart.renderHorizontalLabels())
     horizontalChart2.forEach(chart => chart.renderHorizontalTicks())
     horizontalChart2.forEach(chart => chart.renderHorizontalTicksText())
+    horizontalChart2.forEach(chart => chart.renderHorizontalHeader())
 }
 function renderColumnChart(){
     columnChart.forEach(chart => chart.renderColumns())
@@ -153,4 +155,5 @@ function renderColumnChart(){
     columnChart.forEach(chart => chart.renderColumnLabels())
     columnChart.forEach(chart => chart.renderColumnTicks())
     columnChart.forEach(chart => chart.renderColumnTicksText())
+    columnChart.forEach(chart => chart.renderColumnHeader())
 }

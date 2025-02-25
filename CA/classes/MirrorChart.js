@@ -100,15 +100,45 @@ class MirrorChart {
     }
     pop()
     }
+    renderMirrorTicksText() {
+    push();
+    translate((this.chartPosX+(this.chartHeight/2)),this.chartPosY)
+    rotate(90)
+    fill(this.axisTextColour)
+        
+    noStroke()
+    let tickIncrement = this.chartHeight/this.numTicks;
+    let valueIncrement = this.roundedValue / this.numTicks*2;
+        
+    for (let i = 0; i <= this.numTicks/2; i++) {
+        let yPos = tickIncrement * i; 
+        push();
+
+        translate(this.tickLength + this.chartWidth + 15, -yPos+5);
+        rotate(-90)  
+        text(valueIncrement * i, 0, 0);
+        pop();
+        push();
+
+        translate(this.tickLength + this.chartWidth + 15, +yPos+5);
+        rotate(-90)  
+        text(valueIncrement * i, 0, 0);
+        pop();
+        
+    }
+    pop()
+    }
+    
+    
     renderMirrorHeader() {
         push()
         translate(this.chartPosX,this.chartPosY)
         fill(this.axisTextColour)
         textSize(20)
         textAlign(RIGHT, CENTER)
-        text(this.header,this.chartHeight/2-10,-5)
+        text(String(this.grossValue),this.chartHeight/2-10,-10)
         textAlign(LEFT)
-        text(this.header2,this.chartHeight/2+10,-5)
+        text(String(this.budgetValue),this.chartHeight/2+10,-10)
         pop()
         
     }

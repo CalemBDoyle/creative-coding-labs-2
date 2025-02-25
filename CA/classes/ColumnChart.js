@@ -10,7 +10,7 @@ class ColumnChart {
         this.axisThickness =obj.axisThickness || 3;
         this.axisTickThickness =obj.axisTickThickness || 3;
         this.chartPosX = obj.xPos || 40;
-        this.chartPosY = obj.yPos || 270;
+        this.chartPosY = obj.yPos || 300;
         this.maxValue=obj.maxValue
         this.roundedValue = ceil(this.maxValue / 100) * 100
  
@@ -109,5 +109,16 @@ class ColumnChart {
                 
     }
     pop()
+    }
+    renderColumnHeader() {
+        push()
+        
+        translate(this.chartPosX,this.chartPosY)
+        fill(this.axisTextColour)
+        textSize(20)
+        textAlign(CENTER)
+        text("Comparing "+String(this.yValues[0])+" with "+String(this.yValues[1]),this.chartWidth/2+30,-this.chartHeight-30)
+        pop()
+        
     }
 }
