@@ -8,6 +8,7 @@ let columnChart = [];
 let stackedChart = [];
 let horizontalChart1 = [];
 let horizontalChart2 = [];
+let barColours=[];
 
 
 //loads all data
@@ -23,6 +24,7 @@ function setup(){
     noLoop();
     cleanData()
     cleanGenreData()
+    barColours.push([255, 99, 132],[255, 159, 64],[255, 206, 86],[75, 192, 192],[54, 162, 235],[153, 102, 255],[255, 105, 180],[186, 85, 211],[60, 179, 113],[0, 255, 255],[255, 69, 0],[255, 165, 0],[75, 0, 130],[138, 43, 226],[255, 215, 0],[34, 139, 34],[255, 0, 255],[255, 99, 255],[255, 0, 0],[128, 128, 128] )
     //max Value calculation for column chart
     let maxBudget= max(cleanedData.map(row=> row.budget))
     let maxGross= max(cleanedData.map(row=> row.gross_total))
@@ -36,7 +38,8 @@ function setup(){
     barChart.push(new BarChart({
         data: cleanedData,
         xValue: "movie_name",
-        yValue: "gross_total"
+        yValue: "gross_total",
+        barColours: barColours
     }));
     mirrorChart.push(new MirrorChart({
         data: cleanedData,
@@ -62,7 +65,8 @@ function setup(){
     horizontalChart1.push(new HorizontalChart({
         data: cleanedData,
         xValue: "movie_name",
-        yValue: "imdb_rating"
+        yValue: "imdb_rating",
+        barColours: barColours
     }));
     horizontalChart2.push(new HorizontalChart({
         data: cleanedData,
@@ -70,6 +74,8 @@ function setup(){
         yValue: "budget",
         XPos: 1200,
         yPos: 1150,
+        barColours: barColours
+        
     }));
 }
 function draw() {

@@ -23,7 +23,7 @@ class HorizontalChart {
         this.scaler= this.chartHeight / this.roundedValue
         this.axisColour= color(158, 163, 176);
         this.axisTickColour= color(0,0,0);
-        this.barColour = color (84, 106, 123);
+        this.barColours = obj.barColours
         this.axisTextColour = color(13, 31, 45);
         this.numTicks = 10;
         this.tickLength = 3;
@@ -36,7 +36,7 @@ class HorizontalChart {
     translate(this.margin,0)
     for (let i = 0; i < this.data.length; i++) {
         let xPos = (this.barWidth + this.gap) * i;
-        fill(this.barColour)
+        fill(this.barColours[i])
         noStroke()
         rect(xPos,0,this.barWidth,-this.data[i][this.yValue]*this.scaler)
        
