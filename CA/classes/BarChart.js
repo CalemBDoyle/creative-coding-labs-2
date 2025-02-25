@@ -10,7 +10,7 @@ class BarChart {
         this.axisThickness =obj.axisThickness || 3;
         this.axisTickThickness =obj.axisTickThickness || 3;
         this.chartPosX = obj.xPos || 100;
-        this.chartPosY = obj.yPos || 270;
+        this.chartPosY = obj.yPos || 300;
         // creates rounded Value (makes reading chart easier)
         this.maxValue = max(cleanedData.map(row => row[this.yValue]));
         this.roundedValue = ceil(this.maxValue / 100) * 100
@@ -23,6 +23,7 @@ class BarChart {
         this.axisTextColour = color(13, 31, 45);
         this.numTicks = 10;
         this.tickLength = 3;
+        this.header = "Gross Income"
     }
     renderBars() {
     push();
@@ -99,5 +100,15 @@ class BarChart {
             
     }
     pop()
+    }
+    renderHeader() {
+        push()
+        translate(this.chartPosX,this.chartPosY)
+        fill(this.axisTextColour)
+        textSize(20)
+        textAlign(CENTER)
+        text("Gross Income",this.chartWidth/2,-this.chartHeight-30)
+        pop()
+        
     }
 }

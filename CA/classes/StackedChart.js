@@ -5,7 +5,7 @@ class StackedChart {
         this.yValues = obj.yValues;
         this.chartHeight=obj.chartHeight || 250 ;
         this.chartWidth=obj.chartWidth || 500;
-        this.barWidth=obj.barWidth || 20;
+        this.barWidth=obj.barWidth || 50;
         this.margin=obj.margin || 15;
         this.axisThickness =obj.axisThickness || 3;
         this.axisTickThickness =obj.axisTickThickness || 3;
@@ -16,8 +16,15 @@ class StackedChart {
         this.scaler= this.chartHeight / this.total
         this.axisColour= color(158, 163, 176);
         this.axisTickColour= color(0,0,0);
-        this.barColour = ['#FF0000','#00FF00', '#0000FF', '#FFFF00', '#00FFFF','#FF00FF'];
+        this.actionColour = color(102,206,214)
+        this.adventureColour = color(93, 112, 127)
+        this.biographyColour = color(109, 138, 150)
+        this.crimeColour = color(135, 151, 178)
+        this.dramaColour = color(167, 165, 198)
+        this.horrorColour = color(121, 141, 157)
+        this.barColours = [this.actionColour,this.adventureColour, this.biographyColour, this.crimeColour, this.dramaColour,this.horrorColour];
         this.axisTextColour = color(13, 31, 45);
+        
         this.numTicks = 6;
         this.tickLength = 3;
     }
@@ -33,7 +40,7 @@ class StackedChart {
         push()
         for(let j=0; j<this.yValues.length; j++){
             noStroke();
-            fill(this.barColour[j])
+            fill(this.barColours[j])
             rect(0,0,this.barWidth,-this.data[i][this.yValues[j]]*this.scaler)
             translate(0, -this.data[i][this.yValues[j]]*this.scaler)
         }

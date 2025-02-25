@@ -9,7 +9,7 @@ class HorizontalChart {
         this.margin=obj.margin || 15;
         this.axisThickness =obj.axisThickness || 3;
         this.axisTickThickness =obj.axisTickThickness || 3;
-        this.chartPosX = obj.xPos || 1000;
+        this.chartPosX = obj.xPos || 1200;
         this.chartPosY = obj.yPos || 600;
         // creates rounded Value (makes reading chart easier)
         this.maxValue = max(cleanedData.map(row => row[this.yValue]));
