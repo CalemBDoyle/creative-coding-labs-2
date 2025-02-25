@@ -19,8 +19,8 @@ class ColumnChart {
  
         this.axisColour= color(158, 163, 176);
         this.axisTickColour= color(0,0,0);
-        this.barColour1 = color (255, 0, 0);
-        this.barColour2 = color(0,0,255)
+        this.barColour1 = color (120, 150, 120);
+        this.barColour2 = color (150,80,80);
         this.axisTextColour = color(13, 31, 45);
         this.numTicks = 10;
         this.tickLength = 3;

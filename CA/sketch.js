@@ -79,7 +79,7 @@ function setup(){
 function draw() {
     background(250, 225, 223)
     //renders bar chart functions
-    // renderBarChart()
+    renderBarChart()
     //renders mirror chart
     renderMirrorChart()
     //renders column chart
@@ -132,6 +132,7 @@ function renderStackedChart(){
     stackedChart.forEach(chart => chart.renderStackedTicks())
     stackedChart.forEach(chart => chart.renderStackedTicksText())
     stackedChart.forEach(chart => chart.renderStackedLegend())
+    stackedChart.forEach(chart => chart.renderStackedHeader())
 }
 function renderHorizontalChart1(){
     horizontalChart1.forEach(chart => chart.renderHorizontalBars())

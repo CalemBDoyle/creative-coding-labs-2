@@ -10,7 +10,7 @@ class StackedChart {
         this.axisThickness =obj.axisThickness || 3;
         this.axisTickThickness =obj.axisTickThickness || 3;
         this.chartPosX = obj.xPos || 800;
-        this.chartPosY = obj.yPos || 270;
+        this.chartPosY = obj.yPos || 300;
         this.total = obj.total
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin * 2))/(this.data.length-1);
         this.scaler= this.chartHeight / this.total
@@ -120,7 +120,20 @@ class StackedChart {
         fill(this.barColours[i])
         rect(0,30*i,10,10)
         fill(0)
-        text("hello",20,(30*i)+10)
+        text(String(this.yValues[i]),20,(30*i)+10)
+        
         }
+        pop()
+    }
+    renderStackedHeader() {
+        push()
+        
+        translate(this.chartPosX,this.chartPosY)
+        fill(this.axisTextColour)
+        textSize(20)
+        textAlign(CENTER)
+        text("Genres released per decade",this.chartWidth/2+30,-this.chartHeight-30)
+        pop()
+        
     }
 }

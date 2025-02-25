@@ -10,17 +10,9 @@ class BarChart {
         this.axisThickness =obj.axisThickness || 3;
         this.axisTickThickness =obj.axisTickThickness || 3;
         this.chartPosX = obj.xPos || 100;
-        this.chartPosY = obj.yPos || 1550;
-        // creates rounded Value (makes reading chart easier)
-        this.maxValue = max(cleanedData.map(row => row[this.yValue]));
-        if (this.maxValue < 100) {
-            this.roundedValue = ceil(this.maxValue / 10) * 10
-        } else {
-            this.roundedValue = ceil(this.maxValue / 100) * 100
-        }
- 
+        this.chartPosY = obj.yPos || 300;
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin * 2))/(this.data.length-1);
-        this.scaler= this.chartHeight / this.roundedValue
+        this.scaler= this.chartHeight / max(cleanedData.map(row => row[this.yValue]))
         this.axisColour= color(158, 163, 176);
         this.axisTickColour= color(0,0,0);
         this.barColours = color(110, 160, 255);
@@ -90,29 +82,4 @@ class BarChart {
     pop()
     }
 
-    renderTicksText() {
-    push();
-    translate(this.chartPosX,this.chartPosY)
-    fill(this.axisTextColour)
-    noStroke()
-    let tickIncrement = this.chartHeight/this.numTicks;
-    let valueIncrement = this.roundedValue / this.numTicks;
-    for(let i = 0; i <= this.numTicks; i++) {
-            
-    text(valueIncrement*i, this.tickLength-30, -tickIncrement*i)
-            
-    }
-    pop()
-    }
-    renderHeader() {
-        push()
-        
-        translate(this.chartPosX,this.chartPosY)
-        fill(this.axisTextColour)
-        textSize(20)
-        textAlign(CENTER)
-        text(String(this.yValue),this.chartWidth/2,-this.chartHeight-30)
-        pop()
-        
-    }
 }

@@ -10,7 +10,7 @@ class MirrorChart {
         this.margin=obj.margin || 5;
         this.axisThickness =obj.axisThickness || 3;
         this.axisTickThickness =obj.axisTickThickness || 3;
-        this.chartPosX = obj.xPos || 300;
+        this.chartPosX = obj.xPos || 400;
         this.chartPosY = obj.yPos || 700;
         // creates rounded Value (makes reading chart easier)
         this.maxValue = max(cleanedData.map(row => row[this.grossValue]));
