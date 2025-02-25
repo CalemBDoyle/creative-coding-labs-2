@@ -11,7 +11,7 @@ let horizontalChart2 = [];
 let font;
 
 
-//loads all data
+//loads all data and font
 function preload(){
     data= loadTable('data/movies.csv', 'csv', 'header')
     genreData=loadTable('data/movie_genre.csv', 'csv', 'header')

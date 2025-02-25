@@ -29,10 +29,12 @@ class BarChart {
         this.tickLength = 3;
     }
     renderBars() {
+    //moves the corodinate system
     push();
     translate(this.chartPosX,this.chartPosY)
     push()
     translate(this.margin,0)
+    //loop that creates all the bars
     for (let i = 0; i < this.data.length; i++) {
         let xPos = (this.barWidth + this.gap) * i;
         fill(this.barColours)
@@ -44,6 +46,7 @@ class BarChart {
     pop()
     }
  
+    //plots axis
     renderAxis() {
         push();
         translate(this.chartPosX,this.chartPosY)
@@ -54,13 +57,14 @@ class BarChart {
         line(0,0,this.chartWidth,0)
         pop()
     }
- 
+    
     renderLabels() {
     push();
     translate(this.chartPosX,this.chartPosY)
  
     push()
     translate(this.margin,0)
+    //plots the labels on the x axis
     for (let i = 0; i < this.data.length; i++) {
         let xPos = (this.barWidth + this.gap) * i;        
         push()
@@ -75,13 +79,15 @@ class BarChart {
     pop()
     pop()
     }
- 
+    
+    
     renderTicks() {
     push();
     translate(this.chartPosX,this.chartPosY)
     noFill()
     stroke(this.axisTickColour)
     strokeWeight(this.axisTickThickness)
+    // places ticks on the y axis, amount specified above
     let tickIncrement = this.chartHeight/this.numTicks;
     for(let i = 0; i <= this.numTicks; i++) {
         line(0, -tickIncrement*i, -this.tickLength, -tickIncrement*i)
@@ -97,6 +103,7 @@ class BarChart {
     noStroke()
     let tickIncrement = this.chartHeight/this.numTicks;
     let valueIncrement = this.roundedValue / this.numTicks;
+    //ticks labels rendered at the beside ticks
     for(let i = 0; i <= this.numTicks; i++) {
             
     text(valueIncrement*i, this.tickLength-30, -tickIncrement*i)
@@ -106,7 +113,7 @@ class BarChart {
     }
     renderHeader() {
         push()
-        
+        //Header rendered. yValue turned into a string for the header
         translate(this.chartPosX,this.chartPosY)
         fill(this.axisTextColour)
         textSize(20)

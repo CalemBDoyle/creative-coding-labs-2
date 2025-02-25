@@ -28,6 +28,7 @@ class StackedChart {
         this.numTicks = 6;
         this.tickLength = 3;
     }
+    //Stacked Bars loaded
     renderStackedBars() {
     push();
     translate(this.chartPosX,this.chartPosY)
@@ -42,6 +43,7 @@ class StackedChart {
             noStroke();
             fill(this.barColours[j])
             rect(0,0,this.barWidth,-this.data[i][this.yValues[j]]*this.scaler)
+            //translates to the top of the last bar made so the next bar stacks
             translate(0, -this.data[i][this.yValues[j]]*this.scaler)
         }
         
@@ -51,6 +53,7 @@ class StackedChart {
     pop();
     pop();
 }
+//Axis rendered
     renderStackedAxis() {
         push();
         translate(this.chartPosX,this.chartPosY)
@@ -61,7 +64,7 @@ class StackedChart {
         line(0,0,this.chartWidth,0)
         pop()
     }
- 
+//Labels rendered
     renderStackedLabels() {
     push();
     translate(this.chartPosX,this.chartPosY)
@@ -82,7 +85,8 @@ class StackedChart {
     pop()
     pop()
     }
- 
+
+//ticks rendered
     renderStackedTicks() {
     push();
     translate(this.chartPosX,this.chartPosY)
@@ -96,7 +100,7 @@ class StackedChart {
     }
     pop()
     }
-
+//text rendered beside ticks
     renderStackedTicksText() {
     push();
     translate(this.chartPosX,this.chartPosY)
@@ -111,15 +115,19 @@ class StackedChart {
     }
     pop()
     }
+    //legend rendered
     renderStackedLegend(){
         push()
         translate(this.chartPosX, this.chartPosY)
         noStroke()
         translate (this.chartWidth+10, -this.chartHeight)
+        
         for(let i=0; i <= this.data.length; i++){
+        //amount of squares rendered dependent on length of data
         fill(this.barColours[i])
         rect(0,30*i,10,10)
         fill(0)
+        //text rendered based on the name of yValues
         text(String(this.yValues[i]),20,(30*i)+10)
         
         }

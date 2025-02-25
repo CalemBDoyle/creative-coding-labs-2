@@ -13,10 +13,12 @@ class ColumnChart {
         this.chartPosY = obj.yPos || 300;
         this.maxValue=obj.maxValue
         this.roundedValue = ceil(this.maxValue / 100) * 100
- 
+        
+        //gap and scaler made 
         this.gap = (this.chartWidth - (this.data.length * this.barWidth * this.yValues.length) - (this.margin * 2))/(this.data.length-1);
         this.scaler= this.chartHeight / this.roundedValue
- 
+        
+        //colours defined
         this.axisColour= color(158, 163, 176);
         this.axisTickColour= color(0,0,0);
         this.barColour1 = color (120, 150, 120);
@@ -37,6 +39,7 @@ class ColumnChart {
         console.log(this.yValues.length)
         for(let j=0; j<this.yValues.length; j++){
         noStroke()
+        //changes color depending on the index
         if (j === 0) {
             fill(this.barColour1);
           } else {

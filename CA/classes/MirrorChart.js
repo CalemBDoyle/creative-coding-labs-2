@@ -14,12 +14,15 @@ class MirrorChart {
         this.chartPosY = obj.yPos || 700;
         // creates rounded Value (makes reading chart easier)
         this.maxValue = max(cleanedData.map(row => row[this.grossValue]));
+        //if statement made for if value is less then 100 it rounds to nearest ten
         if (this.maxValue < 100) {
             this.roundedValue = ceil(this.maxValue / 10) * 10
+        // if its greater than its rounded to nearest hundred
         } else {
             this.roundedValue = ceil(this.maxValue / 100) * 100
         }
- 
+        
+        //gap + scaler calculated
         this.gap = (this.chartWidth - (this.data.length * this.barWidth) - (this.margin * 2))/(this.data.length-1);
         this.scaler= this.chartHeight / this.roundedValue;
  
@@ -30,8 +33,6 @@ class MirrorChart {
         this.axisTextColour = color(13, 31, 45);
         this.numTicks = 10;
         this.tickLength = 3;
-        this.header = "Gross Income"
-        this.header2 = "Budget"
     }
     renderMirrorBars() {
     
@@ -42,6 +43,7 @@ class MirrorChart {
     translate(this.margin,0)
     for (let i = 0; i < this.data.length; i++) {
         let xPos = (this.barWidth + this.gap) * i;
+        //gross data bar is rendered one direction. budget value is rendered in the opposite
         fill(this.dataColour)
         noStroke()
         rect(xPos,0,this.barWidth,(this.data[i][this.grossValue]*this.scaler)/2)
@@ -51,7 +53,8 @@ class MirrorChart {
     pop()
     pop()
     }
- 
+    
+    //axis rendered
     renderMirrorAxis() {
         push();
         translate(this.chartPosX,this.chartPosY)
@@ -63,7 +66,8 @@ class MirrorChart {
         line(0,0,this.chartWidth,0)
         pop()
     }
- 
+    
+    //labels rendered on axis
     renderMirrorLabels() {
     push();
     translate(this.chartPosX,this.chartPosY)
@@ -71,6 +75,7 @@ class MirrorChart {
  
     push()
     translate(this.margin,0)
+    //aligned right to adjust for rotation
     for (let i = 0; i < this.data.length; i++) {
         let yPos = (this.barWidth + this.gap) * i;        
         push()
@@ -85,7 +90,8 @@ class MirrorChart {
     pop()
     pop()
     }
- 
+    
+    //ticks rendered
     renderMirrorTicks() {
     push();
     translate(this.chartPosX,this.chartPosY)
@@ -100,6 +106,7 @@ class MirrorChart {
     }
     pop()
     }
+    //rendered values on x axis
     renderMirrorTicksText() {
     push();
     translate((this.chartPosX+(this.chartHeight/2)),this.chartPosY)
@@ -107,11 +114,13 @@ class MirrorChart {
     fill(this.axisTextColour)
         
     noStroke()
+    //calculations adjusted to start at 0 in the middle of chart
     let tickIncrement = this.chartHeight/this.numTicks;
     let valueIncrement = this.roundedValue / this.numTicks*2;
         
     for (let i = 0; i <= this.numTicks/2; i++) {
         let yPos = tickIncrement * i; 
+        //increments increase in one direction
         push();
 
         translate(this.tickLength + this.chartWidth + 15, -yPos+5);
@@ -119,7 +128,7 @@ class MirrorChart {
         text(valueIncrement * i, 0, 0);
         pop();
         push();
-
+        //increments increase in opposite directions
         translate(this.tickLength + this.chartWidth + 15, +yPos+5);
         rotate(-90)  
         text(valueIncrement * i, 0, 0);
@@ -129,14 +138,16 @@ class MirrorChart {
     pop()
     }
     
-    
+    //renders header
     renderMirrorHeader() {
         push()
         translate(this.chartPosX,this.chartPosY)
         fill(this.axisTextColour)
         textSize(20)
-        textAlign(RIGHT, CENTER)
+        //title for values on left side
+        textAlign(RIGHT)
         text(String(this.grossValue),this.chartHeight/2-10,-10)
+        //title for values on right side
         textAlign(LEFT)
         text(String(this.budgetValue),this.chartHeight/2+10,-10)
         pop()
